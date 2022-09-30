@@ -36,9 +36,9 @@ public class CourseService {
 
     public String isExistById(@PathVariable("id") int id){
         Optional<Course> course = courseRepository.findById(id);
-        return "Learner{" +
-                "id=" + id +
-                ", isExist=" + course.isPresent()+
+        return "{" +
+                "\"id=\"" + id +
+                ", \"isExist\"=" + course.isPresent()+
                 '}';
     }
 }

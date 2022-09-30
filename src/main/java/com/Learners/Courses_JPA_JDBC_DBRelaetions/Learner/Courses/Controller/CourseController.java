@@ -4,6 +4,7 @@ import com.Learners.Courses_JPA_JDBC_DBRelaetions.Learner.Courses.Entity.Course;
 import com.Learners.Courses_JPA_JDBC_DBRelaetions.Learner.Courses.Entity.Learner;
 import com.Learners.Courses_JPA_JDBC_DBRelaetions.Learner.Courses.Service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class CourseController {
     @GetMapping("/count")
     public long numberOfCourses(){ return courseService.numberOfCourse();}
 
-    @GetMapping("/isExist/{id}")
+    @GetMapping(value="/isExist/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public String isCourseExistById(@PathVariable int id){    return courseService.isExistById(id);}
 
     @PostMapping

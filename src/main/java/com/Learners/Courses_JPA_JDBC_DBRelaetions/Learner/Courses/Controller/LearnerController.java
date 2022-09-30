@@ -5,6 +5,7 @@ import com.Learners.Courses_JPA_JDBC_DBRelaetions.Learner.Courses.Entity.Learner
 import com.Learners.Courses_JPA_JDBC_DBRelaetions.Learner.Courses.Service.CourseService;
 import com.Learners.Courses_JPA_JDBC_DBRelaetions.Learner.Courses.Service.LearnerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class LearnerController {
     @GetMapping("/count")
     public long numberOfLearners(){ return learnerService.numberOfLearner();}
 
-    @GetMapping("/isExist/{id}")
+    @GetMapping(value = "/isExist/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public String isLeanerExistById(@PathVariable int id){    return learnerService.isExistById(id);}
 
     @PostMapping
@@ -38,7 +39,7 @@ public class LearnerController {
     @PutMapping("/getCourseByLearnerId/{id}")
     public Course getCourseByLearnerId(@PathVariable int id) {  return learnerService.getCourseByLearner(id);}
 
-    @PutMapping("/course/{c_id}/leaner/{id}")
+    @PutMapping("/{id}/course/{c_id}")
     public Learner assignCourseToLearner(@PathVariable int c_id, @PathVariable int id)
     {     return
             learnerService.assignProfile(

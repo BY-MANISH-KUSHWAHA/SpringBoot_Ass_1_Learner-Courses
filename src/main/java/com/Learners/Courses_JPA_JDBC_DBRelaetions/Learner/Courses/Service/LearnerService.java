@@ -57,9 +57,9 @@ public class LearnerService {
 
     public String isExistById(@PathVariable("id") int id){
         Optional<Learner> learner = learnerRepository.findById(id);
-        return "Learner{" +
-                "id=" + id +
-                ", isExist=" + learner.isPresent()+
+        return "{" +
+                "\"id=\"" + id +
+                ", \"isExist\"=" + learner.isPresent()+
                 '}';
     }
 
